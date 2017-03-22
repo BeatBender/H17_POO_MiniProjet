@@ -122,6 +122,8 @@
     <ClInclude Include="JoueurNA.h" />
     <ClInclude Include="LigueSoccer.h" />
     <ClInclude Include="Match.h" />
+    <ClInclude Include="NegoAcheteur.h" />
+    <ClInclude Include="NegoVendeur.h" />
     <ClInclude Include="Palmares.h" />
     <ClInclude Include="Parcours.h" />
     <ClInclude Include="Periode.h" />
@@ -150,6 +152,8 @@
     <ClCompile Include="LigueSoccer.cpp" />
     <ClCompile Include="LigueSoccerApp.cpp" />
     <ClCompile Include="Match.cpp" />
+    <ClCompile Include="NegoAcheteur.cpp" />
+    <ClCompile Include="NegoVendeur.cpp" />
     <ClCompile Include="Palmares.cpp" />
     <ClCompile Include="Parcours.cpp" />
     <ClCompile Include="Periode.cpp" />
