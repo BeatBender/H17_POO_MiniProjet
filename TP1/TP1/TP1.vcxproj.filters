@@ -96,6 +96,9 @@
     <ClInclude Include="NegoVendeur.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Negociateur.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Club.cpp">
@@ -180,6 +183,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="NegoAcheteur.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="Negociateur.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

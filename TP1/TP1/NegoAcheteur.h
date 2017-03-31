@@ -1,15 +1,20 @@
 #pragma once
 #ifndef NEGOACHETEUR_H_
 #define NEGOACHETEUR_H_
+#include "Club.h"
+#include "Negociateur.h"
 
-class NegoAcheteur
+class NegoAcheteur: Negociateur
 {
 public:
 	NegoAcheteur();
 	~NegoAcheteur();
 
-private:
+	void CreateThread();
 
+private:
+	float montant_desire, montant_max, duree;
+	Club representant;
 };
 
 #endif

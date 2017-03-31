@@ -31,7 +31,7 @@ public:
 	string GetCouleur();
 	string GetVille();
 	Date GetDate();
-	vector<Joueur> GetEffectif();
+	vector<Joueur*> GetEffectif();
 	Palmares GetPalmares();
 	int GetNbTitres();
 	vector<Entraineur*> GetEntraineurs();

@@ -8,3 +8,8 @@ NegoVendeur::NegoVendeur()
 NegoVendeur::~NegoVendeur()
 {
 }
+
+void NegoVendeur::CreateThread()
+{
+
+}

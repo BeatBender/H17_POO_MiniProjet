@@ -1,3 +1,19 @@
-﻿  LigueSoccerApp.cpp
-  TP1.vcxproj -> D:\Users\PatrickBeatBender\Documents\GitHub\H17_POO_TP1\TP1\Debug\TP1.exe
-  TP1.vcxproj -> D:\Users\PatrickBeatBender\Documents\GitHub\H17_POO_TP1\TP1\Debug\TP1.pdb (Partial PDB)
+﻿  Screen.cpp
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(47): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(65): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(79): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(96): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(115): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(117): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(145): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(186): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(205): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(226): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(248): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(255): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(275): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(299): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(307): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(315): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(331): error C2276: '&' : opération non conforme sur l'expression d'une fonction membre liée
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(332): error C3867: 'NegoVendeur::CreateThread' : syntaxe non-standard ; utilisez '&' pour créer un pointeur vers un membre

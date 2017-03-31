@@ -142,6 +142,11 @@ string Club::GetNom()
 	return this->nom;
 }
 
+vector<Joueur*> Club::GetEffectif()
+{
+	return effectif;
+}
+
 Palmares Club::GetPalmares()
 {
 	Palmares* palmares_courant = new Palmares;

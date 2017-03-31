@@ -8,3 +8,8 @@ NegoAcheteur::NegoAcheteur()
 NegoAcheteur::~NegoAcheteur()
 {
 }
+
+void NegoAcheteur::CreateThread()
+{
+
+}

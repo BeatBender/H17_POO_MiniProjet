@@ -2,6 +2,10 @@
 #include "Club.h"
 #include <iostream>
 #include "Rencontre.h"
+#include <thread>
+#include "NegoAcheteur.h"
+#include "NegoVendeur.h"
+#include "Negociateur.h"
 
 using namespace std;
 
@@ -280,6 +284,54 @@ void Screen::AfficherScore()
 	system("Pause");
 }
 
+void Screen::CreateTransfert()
+{
+
+	if (vecteur_club.size() == NULL)
+	{
+		cout << "il n'y a pas de club dans la ligue." << endl;
+		return;
+	}
+
+	int choix, choix2, choix3;
+
+	cout << "Quel est le club qui se départi d'un joueur:" << endl;
+	for (int i = 0; i < vecteur_club.size(); i++)
+	{
+		cout << i << ") " << vecteur_club.at(i)->GetNom() << endl;
+	}
+	
+	cin >> choix;
+
+	cout << "Quel joueur s'en va?" << endl;
+	for (int i = 0; i < vecteur_club.at(choix)->GetEffectif().size(); i++)
+	{
+		cout << i << ") " << vecteur_club.at(choix)->GetEffectif().at(i)->GetPrenom() << " " << vecteur_club.at(choix)->GetEffectif().at(i)->GetNom();
+	}
+
+	cin >> choix3;
+	
+	cout << "Quel est le club qui engage le joueur:" << endl;
+	for (int i = 0; i < vecteur_club.size(); i++)
+	{
+		cout << i << ") " << vecteur_club.at(i)->GetNom() << endl;
+	}
+
+	cin >> choix2;
+
+	if (choix2 == choix)
+	{
+		cout << "Vous ne pouvez pas echanger un joueur d'un club a lui-meme" << endl;
+		return;
+	}
+
+	NegoVendeur *uneNegoVente = new NegoVendeur;
+	NegoAcheteur *uneNegoAchat = new NegoAcheteur;
+
+	thread achat(uneNegoAchat->CreateThread);
+	thread vente(uneNegoVente->CreateThread);
+}
+
 void Screen::InitMainMenu()
 {
 	int choix;
@@ -299,6 +351,7 @@ void Screen::InitMainMenu()
 	cout << "11) Creer un contrat" << endl;
 	cout << "12) Afficher les montants de transfert encaisses par club par date" << endl;
 	cout << "13) Afficher le resultat d'un match par date" << endl;
+	cout << "14) Commencer un transfert de joueur" << endl;
 
 	cin >> choix;
 	cout << endl << endl;
@@ -371,6 +424,11 @@ void Screen::InitMainMenu()
 
 	case 13:
 		AfficherScore();
+		InitMainMenu();
+		break;
+
+	case 14:
+		CreateTransfert();
 		InitMainMenu();
 		break;
 

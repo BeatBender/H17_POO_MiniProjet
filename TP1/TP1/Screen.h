@@ -24,6 +24,7 @@ public:
 	void CreateContrat();
 	void AfficherMontantClub();
 	void AfficherScore();
+	void CreateTransfert();
 	
 private:
 
