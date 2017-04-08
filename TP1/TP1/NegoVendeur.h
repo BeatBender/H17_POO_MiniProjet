@@ -11,6 +11,10 @@ public:
 	~NegoVendeur();
 
 	void CreateThread();
+	void SetMontantDesire();
+	void SetMontantMin();
+	void SetDuree();
+	void SetRepresentant(Club*);
 
 private:
 	float montant_desire, montant_min, duree;

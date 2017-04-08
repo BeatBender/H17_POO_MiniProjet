@@ -325,11 +325,17 @@ void Screen::CreateTransfert()
 		return;
 	}
 
+
 	NegoVendeur *uneNegoVente = new NegoVendeur;
 	NegoAcheteur *uneNegoAchat = new NegoAcheteur;
 
-	thread achat(uneNegoAchat->CreateThread);
-	thread vente(uneNegoVente->CreateThread);
+	uneNegoAchat->SetRepresentant(vecteur_club.at(choix2));
+	uneNegoVente->SetRepresentant(vecteur_club.at(choix));
+	
+	thread achat(&NegoVendeur::CreateThread, uneNegoVente);
+	achat.join();
+	thread vente(&NegoAcheteur::CreateThread, uneNegoAchat);
+	vente.join();
 }
 
 void Screen::InitMainMenu()
