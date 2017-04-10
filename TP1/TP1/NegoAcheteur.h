@@ -11,11 +11,14 @@ public:
 	NegoAcheteur();
 	~NegoAcheteur();
 
-	void CreateThread();
+	void createThread();
 	void SetMontantDesire();
 	void SetMontantMax();
 	void SetDuree();
 	void SetRepresentant(Club*);
+
+	float GetMontantDesire();
+	float GetMontantMax();
 
 private:
 	float montant_desire, montant_max, duree;

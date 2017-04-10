@@ -5,6 +5,7 @@
 #include "Entraineur.h"
 #include "Club.h"
 #include <fstream>
+#include <windows.h>
 
 class Screen
 {
@@ -25,6 +26,8 @@ public:
 	void CreateContrat();
 	void AfficherMontantClub();
 	void AfficherScore();
+	DWORD WINAPI threadAcheteur(LPVOID);
+	DWORD WINAPI threadVendeur(LPVOID);
 	void CreateTransfert();
 	void Save();
 	void Reconstruire();

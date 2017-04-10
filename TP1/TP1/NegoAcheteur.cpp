@@ -11,14 +11,6 @@ NegoAcheteur::~NegoAcheteur()
 {
 }
 
-void NegoAcheteur::CreateThread()
-{
-	this->SetMontantDesire();
-	this->SetMontantMax();
-
-	return;
-}
-
 void NegoAcheteur::SetMontantDesire()
 {
 	cout << "Entrez le montant desire de depart de l'acheteur" << endl;
@@ -41,4 +33,14 @@ void NegoAcheteur::SetDuree()
 void NegoAcheteur::SetRepresentant(Club* club)
 {
 	representant = *club;
+}
+
+float NegoAcheteur::GetMontantDesire()
+{
+	return montant_desire;
+}
+
+float NegoAcheteur::GetMontantMax()
+{
+	return montant_max;
 }

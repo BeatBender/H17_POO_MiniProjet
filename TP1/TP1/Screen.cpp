@@ -2,7 +2,7 @@
 #include "Club.h"
 #include <iostream>
 #include "Rencontre.h"
-#include <thread>
+#include <Windows.h>
 #include "NegoAcheteur.h"
 #include "NegoVendeur.h"
 #include "Negociateur.h"
@@ -284,14 +284,36 @@ void Screen::AfficherScore()
 	system("Pause");
 }
 
+//Definition des threads
+DWORD WINAPI Screen::threadAcheteur(LPVOID negoAchat)
+{
+	float montantIdeal = (((NegoAcheteur*)negoAchat)->GetMontantMax()) - (((NegoAcheteur*)negoAchat)->GetMontantDesire());
+
+	return 0;
+}
+
+DWORD WINAPI Screen::threadVendeur(LPVOID negoVente)
+{
+	float montantIdeal = (((NegoVendeur*)negoVente)->GetMontantMin()) - (((NegoVendeur*)negoVente)->GetMontantDesire());
+
+	return 0;
+}
+
 void Screen::CreateTransfert()
 {
-
 	if (vecteur_club.size() == NULL)
 	{
 		cout << "il n'y a pas de club dans la ligue." << endl;
 		return;
 	}
+
+	//Nombre de threads
+	int nbThread = 2;
+	HANDLE *threads = new HANDLE[nbThread];
+
+	//ID des threads
+	DWORD *idThread1 = new DWORD();
+	DWORD *idThread2 = new DWORD();
 
 	int choix, choix2, choix3;
 
@@ -325,17 +347,26 @@ void Screen::CreateTransfert()
 		return;
 	}
 
-
+	//Pointeurs d'un acheteur et d'un vendeur
 	NegoVendeur *uneNegoVente = new NegoVendeur;
 	NegoAcheteur *uneNegoAchat = new NegoAcheteur;
 
+	//Setteurs des negociateurs
 	uneNegoAchat->SetRepresentant(vecteur_club.at(choix2));
+	uneNegoAchat->SetMontantDesire();
+	uneNegoAchat->SetMontantMax();
 	uneNegoVente->SetRepresentant(vecteur_club.at(choix));
+	uneNegoVente->SetMontantDesire();
+	uneNegoVente->SetMontantMin();
 	
-	thread achat(&NegoVendeur::CreateThread, uneNegoVente);
-	achat.join();
-	thread vente(&NegoAcheteur::CreateThread, uneNegoAchat);
-	vente.join();
+	//Création des threads
+	threads[0] = CreateThread(0, 0, threadAcheteur, uneNegoAchat, 0, idThread1);
+	threads[1] = CreateThread(0, 0, threadVendeur, uneNegoVente, 0, idThread2);
+
+	//Attendre que les threads se terminent
+	WaitForMultipleObjects(nbThread, threads, true, INFINITE);
+
+	system("pause");
 }
 
 void Screen::Save()
@@ -370,10 +401,10 @@ void Screen::Reconstruire()
 
 void Screen::InitMainMenu()
 {
-	if (vecteur_club.empty())
+	/*if (vecteur_club.empty())
 	{
 		Reconstruire();
-	}
+	}*/
 
 	int choix;
 

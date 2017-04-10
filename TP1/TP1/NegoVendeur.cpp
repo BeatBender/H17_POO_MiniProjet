@@ -9,12 +9,6 @@ NegoVendeur::~NegoVendeur()
 {
 }
 
-void NegoVendeur::CreateThread()
-{
-	this->SetMontantDesire();
-	this->SetMontantMin();
-	return;
-}
 
 void NegoVendeur::SetMontantDesire()
 {
@@ -38,4 +32,14 @@ void NegoVendeur::SetDuree()
 void NegoVendeur::SetRepresentant(Club* club)
 {
 	representant = *club;
+}
+
+float NegoVendeur::GetMontantDesire()
+{
+	return montant_desire;
+}
+
+float NegoVendeur::GetMontantMin()
+{
+	return montant_min;
 }
