@@ -15,6 +15,12 @@ void Club::SetNom()
 	this->nom = nom_club;
 }
 
+void Club::SetNom2(string name)
+{
+	this->nom = name;
+	return;
+}
+
 void Club::SetHistoire()
 {
 	string histoire_club;

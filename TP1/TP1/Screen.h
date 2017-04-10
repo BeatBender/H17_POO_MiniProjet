@@ -4,6 +4,7 @@
 
 #include "Entraineur.h"
 #include "Club.h"
+#include <fstream>
 
 class Screen
 {
@@ -25,6 +26,10 @@ public:
 	void AfficherMontantClub();
 	void AfficherScore();
 	void CreateTransfert();
+	void Save();
+	void Reconstruire();
+
+	fstream file;
 	
 private:
 

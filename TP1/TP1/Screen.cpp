@@ -338,8 +338,43 @@ void Screen::CreateTransfert()
 	vente.join();
 }
 
+void Screen::Save()
+{
+	file.open("file.txt", ios::in);
+	for (int i = 0; i < vecteur_club.size(); i++)
+	{
+		file << vecteur_club.at(i)->GetNom() << endl;
+	}
+	file.close();
+	return;
+}
+
+void Screen::Reconstruire()
+{
+	file.open("file.txt", ios::out);
+	file.seekg(0);
+	string nom;
+	Club* club;
+
+	while (! file.eof())
+	{
+		club = new Club;
+		file >> nom;
+		club->SetNom2(nom);
+		vecteur_club.push_back(club);
+	}
+
+	file.close();
+	return;
+}
+
 void Screen::InitMainMenu()
 {
+	if (vecteur_club.empty())
+	{
+		Reconstruire();
+	}
+
 	int choix;
 
 	cout << "--------------------- Menu Principal -----------------------" << endl;
@@ -358,6 +393,7 @@ void Screen::InitMainMenu()
 	cout << "12) Afficher les montants de transfert encaisses par club par date" << endl;
 	cout << "13) Afficher le resultat d'un match par date" << endl;
 	cout << "14) Commencer un transfert de joueur" << endl;
+	cout << "15) Sauvegarder les noms de club" << endl;
 
 	cin >> choix;
 	cout << endl << endl;
@@ -435,6 +471,11 @@ void Screen::InitMainMenu()
 
 	case 14:
 		CreateTransfert();
+		InitMainMenu();
+		break;
+
+	case 15:
+		Save();
 		InitMainMenu();
 		break;
 

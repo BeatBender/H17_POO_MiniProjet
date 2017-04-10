@@ -41,6 +41,7 @@ public:
 
 	//Set
 	void SetNom();
+	void SetNom2(string);
 	void SetHistoire();
 	void SetCouleur();
 	void SetVille();
