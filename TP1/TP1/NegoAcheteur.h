@@ -11,7 +11,7 @@ public:
 	NegoAcheteur();
 	~NegoAcheteur();
 
-	void createThread();
+	//void createThread();
 	void SetMontantDesire();
 	void SetMontantMax();
 	void SetDuree();

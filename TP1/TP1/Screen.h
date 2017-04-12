@@ -26,8 +26,8 @@ public:
 	void CreateContrat();
 	void AfficherMontantClub();
 	void AfficherScore();
-	DWORD WINAPI threadAcheteur(LPVOID);
-	DWORD WINAPI threadVendeur(LPVOID);
+	//DWORD WINAPI threadAcheteur(LPVOID);
+	//DWORD WINAPI threadVendeur(LPVOID);
 	void CreateTransfert();
 	void Save();
 	void Reconstruire();

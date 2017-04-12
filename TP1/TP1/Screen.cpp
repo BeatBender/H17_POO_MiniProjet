@@ -11,8 +11,15 @@ using namespace std;
 
 class Club;
 
+//Vecteurs globaux
 vector<Club*> vecteur_club;
 vector<Rencontre*> vecteur_rencontres;
+
+//Variables partageables par les threads d'un transfert
+bool echangeReussi = false;
+bool mutex = true;
+float montantDemande = 0;
+float montantFinal = 0;
 
 Screen::Screen()
 {
@@ -285,16 +292,133 @@ void Screen::AfficherScore()
 }
 
 //Definition des threads
-DWORD WINAPI Screen::threadAcheteur(LPVOID negoAchat)
+DWORD WINAPI threadAcheteur(LPVOID uneNegoAchat)
 {
-	float montantIdeal = (((NegoAcheteur*)negoAchat)->GetMontantMax()) - (((NegoAcheteur*)negoAchat)->GetMontantDesire());
+	mutex = false;
+
+	float montantInitial = (((NegoAcheteur*)uneNegoAchat)->GetMontantDesire());
+	float montantMax = (((NegoAcheteur*)uneNegoAchat)->GetMontantMax());
+	float montantIdeal = montantMax - montantInitial;
+	float montantCourant = montantInitial;
+	cout << "Le montant de depart d'achat du joueur est: " << montantInitial << endl;
+	cout << "Le montant ideal d'achat du Joueur de l'acheteur est: " << montantIdeal << endl;
+
+	system("pause");
+
+	mutex = true;
+
+	Sleep(2000);
+
+	while (!mutex)
+	{
+		Sleep(1000);
+	}
+
+	while (!echangeReussi)
+	{
+		if (montantDemande != montantInitial)
+		{
+			montantCourant = montantCourant + 1000;
+		}
+
+		cout << "Acheteur -- " << "Je prends le joueur pour " << montantCourant << "$" << endl;
+		montantDemande = montantCourant;
+
+		mutex = true;
+		Sleep(2000);
+
+		while (!mutex)
+		{
+			Sleep(1000);
+		}
+
+		if (montantDemande <= montantIdeal)
+		{
+			cout << "Tres bien, marche conclu." << endl;
+			echangeReussi = true;
+			cout << "L'echange a reussi" << endl;
+			system("pause");
+			mutex = true;
+			return 0;
+		}
+	}
+
+	if (montantDemande > montantMax)
+	{
+		cout << "Le transfert est annule." << endl;
+		echangeReussi = false;
+		return 0;
+	}
 
 	return 0;
 }
 
-DWORD WINAPI Screen::threadVendeur(LPVOID negoVente)
+DWORD WINAPI threadVendeur(LPVOID negoVente)
 {
-	float montantIdeal = (((NegoVendeur*)negoVente)->GetMontantMin()) - (((NegoVendeur*)negoVente)->GetMontantDesire());
+	Sleep(1000);
+
+	while (!mutex)
+	{
+		Sleep(1000);
+	}
+
+	mutex = false;
+
+	float montantInitial = (((NegoVendeur*)negoVente)->GetMontantDesire());
+	float montantMin = (((NegoVendeur*)negoVente)->GetMontantMin());
+	float montantIdeal = montantInitial - montantMin;
+	float montantCourant = montantInitial;
+	cout << "Le montant de depart de vente du joueur est: " << montantInitial << endl;
+	cout << "Le montant idéal de vente du Joueur du vendeur est: " << montantIdeal << endl;
+	cout << endl << "La negociation va maintenant commencer" << endl;
+	system("pause");
+
+	mutex = true;
+
+	Sleep(2000);
+
+	while (!mutex)
+	{
+		Sleep(1000);
+	}
+
+	while (!echangeReussi)
+	{
+		mutex = false;
+
+		if (montantDemande >= montantIdeal)
+		{
+			cout << "Tres bien, marche conclu." << endl;
+			echangeReussi = true;
+			cout << "L'echange a reussi" << endl;
+			system("pause");
+			mutex = true;
+			return 0;
+		}
+
+		if (montantDemande != montantInitial)
+		{
+			montantCourant = montantCourant - 1000;
+		}
+		
+		cout << "Je ne suis pas d'accord, je veux " << montantCourant << "$ pour vous laisser le joueur." << endl;
+		montantDemande = montantCourant;
+
+		mutex = true;
+		Sleep(2000);
+
+		while (!mutex)
+		{
+			Sleep(1000);
+		}
+	}
+
+	if (montantDemande < montantMin)
+	{
+		cout << "Le transfert est annule." << endl;
+		echangeReussi = false;
+		return 0;
+	}
 
 	return 0;
 }
@@ -366,7 +490,11 @@ void Screen::CreateTransfert()
 	//Attendre que les threads se terminent
 	WaitForMultipleObjects(nbThread, threads, true, INFINITE);
 
+	//TODO: Echanger le joueurs dans les vecteurs
+	//...
+
 	system("pause");
+	echangeReussi = false;
 }
 
 void Screen::Save()

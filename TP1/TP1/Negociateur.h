@@ -8,7 +8,7 @@ public:
 	Negociateur();
 	~Negociateur();
 
-	virtual void createThread() = 0;
+	//virtual void createThread() = 0;
 
 private:
 

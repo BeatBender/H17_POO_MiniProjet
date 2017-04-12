@@ -10,7 +10,7 @@ public:
 	NegoVendeur();
 	~NegoVendeur();
 
-	void createThread();
+	//void createThread();
 	void SetMontantDesire();
 	void SetMontantMin();
 	void SetDuree();
