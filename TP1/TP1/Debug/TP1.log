@@ -12,9 +12,9 @@ d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cp
 d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(255): warning C4018: '<' : incompatibilité signed/unsigned
 d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(262): warning C4018: '<' : incompatibilité signed/unsigned
 d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(282): warning C4018: '<' : incompatibilité signed/unsigned
-d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(445): warning C4018: '<' : incompatibilité signed/unsigned
-d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(453): warning C4018: '<' : incompatibilité signed/unsigned
 d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(461): warning C4018: '<' : incompatibilité signed/unsigned
-d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(500): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(469): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(477): warning C4018: '<' : incompatibilité signed/unsigned
+d:\users\patrickbeatbender\documents\github\h17_poo_miniprojet\tp1\tp1\screen.cpp(539): warning C4018: '<' : incompatibilité signed/unsigned
   TP1.vcxproj -> D:\Users\PatrickBeatBender\Documents\GitHub\H17_POO_MiniProjet\TP1\Debug\TP1.exe
   TP1.vcxproj -> D:\Users\PatrickBeatBender\Documents\GitHub\H17_POO_MiniProjet\TP1\Debug\TP1.pdb (Partial PDB)

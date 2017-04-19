@@ -334,12 +334,20 @@ DWORD WINAPI threadAcheteur(LPVOID uneNegoAchat)
 
 		if (montantDemande <= montantIdeal)
 		{
-			cout << "Tres bien, marche conclu." << endl;
-			echangeReussi = true;
-			cout << "L'echange a reussi" << endl;
-			system("pause");
-			mutex = true;
-			return 0;
+			if (echangeReussi == true)
+			{
+				return 0;
+			}
+			else
+			{
+				cout << "Tres bien, marche conclu." << endl;
+				echangeReussi = true;
+				cout << "L'echange a reussi" << endl;
+				system("pause");
+				mutex = true;
+				return 0;
+			}
+			
 		}
 	}
 
@@ -388,12 +396,20 @@ DWORD WINAPI threadVendeur(LPVOID negoVente)
 
 		if (montantDemande >= montantIdeal)
 		{
-			cout << "Tres bien, marche conclu." << endl;
-			echangeReussi = true;
-			cout << "L'echange a reussi" << endl;
-			system("pause");
-			mutex = true;
-			return 0;
+			if (echangeReussi == true)
+			{
+				return 0;
+			}
+			else
+			{
+				cout << "Tres bien, marche conclu." << endl;
+				echangeReussi = true;
+				cout << "L'echange a reussi" << endl;
+				system("pause");
+				mutex = true;
+				return 0;
+			}
+			
 		}
 
 		if (montantDemande != montantInitial)
@@ -401,7 +417,7 @@ DWORD WINAPI threadVendeur(LPVOID negoVente)
 			montantCourant = montantCourant - 1000;
 		}
 		
-		cout << "Je ne suis pas d'accord, je veux " << montantCourant << "$ pour vous laisser le joueur." << endl;
+		cout << "Vendeur -- Je ne suis pas d'accord, je veux " << montantCourant << "$ pour vous laisser le joueur." << endl;
 		montantDemande = montantCourant;
 
 		mutex = true;
@@ -490,11 +506,31 @@ void Screen::CreateTransfert()
 	//Attendre que les threads se terminent
 	WaitForMultipleObjects(nbThread, threads, true, INFINITE);
 
-	//TODO: Echanger le joueurs dans les vecteurs
-	//...
 
-	system("pause");
+	if (echangeReussi == true)
+	{
+		Joueur* joueur = new Joueur;
+		joueur = vecteur_club.at(choix)->GetEffectif().at(choix3);
+		vecteur_club.at(choix2)->GetEffectif().push_back(joueur);
+
+		if (vecteur_club.at(choix)->GetEffectif().size() <= 1)
+		{
+			cout << "Le club qui se departi du joueur n'aura plus de joueur, destruction du club." << endl;
+			vecteur_club.erase(vecteur_club.begin() + choix);
+			system("pause");
+		}
+		else
+		{
+			vecteur_club.at(choix)->GetEffectif().erase(vecteur_club.at(choix)->GetEffectif().begin() + choix3);
+		}	
+	}
+	else
+	{
+		return;
+	}
+
 	echangeReussi = false;
+	return;
 }
 
 void Screen::Save()
